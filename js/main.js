@@ -3,7 +3,6 @@ const cardContainer = document.getElementById("card-container");
 let selectedCategory = 1000;
 
 
-
 const fetchCategory = () =>{
     const url = "https://openapi.programming-hero.com/api/videos/categories";
     fetch(url)
