@@ -1,7 +1,16 @@
 const btnContainer = document.getElementById("btn-container");
 const cardContainer = document.getElementById("card-container");
-let selectedCategory = 1000;
 const noVideo = document.getElementById("no-video");
+const sortBtn = document.getElementById("sort-btn");
+
+
+let selectedCategory = 1000;
+let sortByView = false;
+
+sortBtn.addEventListener("click", () => {
+    sortByView = true;
+    fetchDataByCategory(selectedCategory, sortByView);
+})
 
 
 const fetchCategory = () =>{
@@ -29,13 +38,22 @@ const fetchCategory = () =>{
 }
 
 
-const fetchDataByCategory = (categoryID) => {
+const fetchDataByCategory = (categoryID, sortByView) => {
     selectedCategory = categoryID
     console.log(categoryID);
     const url = `https://openapi.programming-hero.com/api/videos/category/${categoryID}`;
     fetch(url)
     .then((res) => res.json())
     .then(({data}) => {
+        if(sortByView){
+            data.sort((a,b) => {
+                const totalViewStrFrist = a.others?.views;
+                const totalViewStrSecond = b.others?.views;
+                const totalViewFirstNumber = parseFloat(totalViewStrFrist.replace("K", "")||0);
+                const totalViewSecondNumber = parseFloat(totalViewStrSecond.replace("K", "")||0);
+                return  totalViewSecondNumber - totalViewFirstNumber;
+            });
+        }
         if(data.length === 0){
             noVideo.classList.remove("hidden");
         }else{
@@ -74,4 +92,4 @@ const fetchDataByCategory = (categoryID) => {
     })
 }
 fetchCategory();
-fetchDataByCategory(selectedCategory);
+fetchDataByCategory(selectedCategory, sortByView);

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PH Tube</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="image/favicon.png" type="image/x-icon">
     <!-- CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +17,7 @@
               <img src="image/Logo.png" alt="logo">
             </div>
             <div class="navbar-center hidden lg:flex">
-                <button class="btn px-6 text-[#252525] bg-[#D3D3D3] hover:bg-[#FF1F3D] hover:text-white font-semibold">Sort by view</button>
+                <button id="sort-btn" class="btn px-6 text-[#252525] bg-[#D3D3D3] hover:bg-[#FF1F3D] hover:text-white font-semibold">Sort by view</button>
             </div>
             <div class="navbar-end">
                 <button class="btn px-6 text-white bg-[#FF1F3D] hover:bg-[#FF1F3D]">Blog</button>
@@ -34,7 +36,7 @@
                 <h3 class="text-[32px] font-bold">Oops!! Sorry, There is no <br> content here</h3>
             </div>
         </section>
-        <section id="card-container" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"> 
+        <section id="card-container" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-3"> 
         </section>
     </main>
 
